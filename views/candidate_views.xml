@@ -50,13 +50,67 @@
         </field>
     </record>
 
-    <!-- Action -->
-    <record id="action_candidate_interview" model="ir.actions.act_window">
-        <field name="name">Candidates</field>
-        <field name="res_model">candidate.interview</field>
-        <field name="view_mode">list,form</field>
-    </record>
+<!-- Search View -->
+<record id="view_candidate_search" model="ir.ui.view">
+    <field name="name">candidate.interview.search</field>
+    <field name="model">candidate.interview</field>
+    <field name="arch" type="xml">
 
+        <search>
+
+            <field name="name"/>
+            <field name="email"/>
+            <field name="position"/>
+
+            <separator/>
+
+            <filter
+                name="draft"
+                string="Draft"
+                domain="[('status','=','draft')]"/>
+
+            <filter
+                name="screening"
+                string="Screening"
+                domain="[('status','=','screening')]"/>
+
+            <filter
+                name="interview"
+                string="Interview"
+                domain="[('status','=','interview')]"/>
+
+            <filter
+                name="accepted"
+                string="Accepted"
+                domain="[('status','=','accepted')]"/>
+
+            <filter
+                name="rejected"
+                string="Rejected"
+                domain="[('status','=','rejected')]"/>
+
+            <group expand="0" string="Group By">
+
+                <filter
+                    string="Status"
+                    name="group_status"
+                    context="{'group_by':'status'}"/>
+
+            </group>
+
+        </search>
+
+    </field>
+</record>
+
+
+ <!-- Action -->
+<record id="action_candidate_interview" model="ir.actions.act_window">
+    <field name="name">Candidates</field>
+    <field name="res_model">candidate.interview</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="view_candidate_search"/>
+</record>
     <!-- Menu -->
     <menuitem
         id="menu_candidate_root"
