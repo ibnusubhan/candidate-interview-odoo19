@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
 
 class Candidate(models.Model):
     _name = "candidate.interview"
@@ -87,3 +87,23 @@ class Candidate(models.Model):
 
     def action_reject(self):
         self.write({"status": "rejected"})
+
+    # =========================
+    # Validation
+    # =========================
+
+    @api.constrains("expected_salary")
+    def _check_expected_salary(self):
+        for record in self:
+            if record.expected_salary < 0:
+                raise ValidationError(
+                    "Expected Salary cannot be negative."
+                )
+
+    @api.constrains("experience")
+    def _check_experience(self):
+        for record in self:
+            if record.experience < 0:
+                raise ValidationError(
+                    "Years of Experience cannot be negative."
+                )
