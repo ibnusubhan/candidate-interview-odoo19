@@ -132,11 +132,51 @@
     <field name="name">candidate.interview.search</field>
     <field name="model">candidate.interview</field>
     <field name="arch" type="xml">
-        <search>
+        <search string="Search Candidates">
+
+            <!-- Search Field -->
             <field name="candidate_code"/>
             <field name="name"/>
             <field name="email"/>
             <field name="position"/>
+
+            <!-- Filter -->
+
+            <filter string="Draft"
+                    name="draft"
+                    domain="[('status','=','draft')]"/>
+
+            <filter string="Screening"
+                    name="screening"
+                    domain="[('status','=','screening')]"/>
+
+            <filter string="Interview"
+                    name="interview"
+                    domain="[('status','=','interview')]"/>
+
+            <filter string="Accepted"
+                    name="accepted"
+                    domain="[('status','=','accepted')]"/>
+
+            <filter string="Rejected"
+                    name="rejected"
+                    domain="[('status','=','rejected')]"/>
+
+            <!-- Group By -->
+         <group>
+
+    <filter
+        string="Status"
+        name="group_status"
+        context="{'group_by':'status'}"/>
+
+    <filter
+        string="Position"
+        name="group_position"
+        context="{'group_by':'position'}"/>
+
+</group>
+
         </search>
     </field>
 </record>
