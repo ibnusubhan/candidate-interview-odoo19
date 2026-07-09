@@ -1,23 +1,55 @@
-# Candidate Interview Management
+# Candidate Interview Management (Odoo 19)
 
-Custom Odoo 19 module for managing candidate interviews.
+A custom Odoo 19 module for managing candidate interviews.
 
-## Overview
+## Features
 
-This module helps HR manage candidate interview processes, including:
+- Candidate Management
+- Auto Candidate ID (Sequence)
+- List View
+- Form View
+- Kanban View
+- Calendar View
+- Graph View
+- Search & Filters
+- Group By Status
+- Workflow Status
+- Statusbar
+- Validation
 
-- Candidate registration
-- Interview scheduling
-- Interview evaluation
-- Interview status tracking
-
-## Technology
+## Technologies
 
 - Odoo 19
 - Python
 - PostgreSQL
 - XML
 
+## Installation
+
+1. Copy module to custom_addons
+2. Update Apps List
+3. Install Candidate Interview Management
+
+## Testing 
+
+| Test                  | Status |
+| --------------------- | ------ |
+| Create Candidate      | ✅      |
+| Edit Candidate        | ✅      |
+| Delete Candidate      | ✅      |
+| Candidate ID Auto     | ✅      |
+| Validation Salary     | ✅      |
+| Validation Experience | ✅      |
+| Status Button         | ✅      |
+| Statusbar             | ✅      |
+| Search                | ✅      |
+| Filter                | ✅      |
+| Group By              | ✅      |
+| Kanban                | ✅      |
+| Graph                 | ✅      |
+| Calendar              | ✅      |
+
+
 ## Author
 
-M Ibnu Subhan Isacz
+Muhamad Ibnu Subhan
