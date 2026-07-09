@@ -13,6 +13,7 @@
 
     "data": [
         "security/ir.model.access.csv",
+        "data/candidate_sequence.xml",
         "views/candidate_views.xml",
     ],
 

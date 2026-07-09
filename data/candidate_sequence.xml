@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="seq_candidate_interview" model="ir.sequence">
+        <field name="name">Candidate Sequence</field>
+        <field name="code">candidate.interview</field>
+        <field name="prefix">CAN</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+</odoo>

@@ -1,9 +1,17 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Candidate(models.Model):
     _name = "candidate.interview"
     _description = "Candidate Interview"
+
+    candidate_code = fields.Char(
+        string="Candidate ID",
+        required=True,
+        copy=False,
+        readonly=True,
+        default="New"
+    )
 
     name = fields.Char(
         string="Candidate Name",
@@ -53,3 +61,29 @@ class Candidate(models.Model):
         string="Status",
         default="draft"
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("candidate_code", "New") == "New":
+                vals["candidate_code"] = self.env["ir.sequence"].next_by_code(
+                    "candidate.interview"
+                ) or "New"
+
+        return super().create(vals_list)
+    
+    # =========================
+    # Button Actions
+    # =========================
+
+    def action_screening(self):
+        self.write({"status": "screening"})
+
+    def action_interview(self):
+        self.write({"status": "interview"})
+
+    def action_accept(self):
+        self.write({"status": "accepted"})
+
+    def action_reject(self):
+        self.write({"status": "rejected"})
