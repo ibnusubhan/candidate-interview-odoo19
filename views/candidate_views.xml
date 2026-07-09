@@ -74,6 +74,25 @@
     </field>
 </record>
 
+<!-- Calendar View -->
+<record id="view_candidate_calendar" model="ir.ui.view">
+    <field name="name">candidate.interview.calendar</field>
+    <field name="model">candidate.interview</field>
+    <field name="arch" type="xml">
+        <calendar
+            string="Interview Schedule"
+            date_start="interview_time"
+            color="status">
+
+            <field name="candidate_code"/>
+            <field name="name"/>
+            <field name="position"/>
+            <field name="status"/>
+
+        </calendar>
+    </field>
+</record>
+
     <!-- Form View -->
     <record id="view_candidate_form" model="ir.ui.view">
         <field name="name">candidate.interview.form</field>
@@ -200,7 +219,7 @@
 <record id="action_candidate_interview" model="ir.actions.act_window">
     <field name="name">Candidates</field>
     <field name="res_model">candidate.interview</field>
-    <field name="view_mode">kanban,list,form,graph</field>
+    <field name="view_mode">kanban,list,form,graph,calendar</field>
     <field name="search_view_id" ref="view_candidate_search"/>
 </record>
 
